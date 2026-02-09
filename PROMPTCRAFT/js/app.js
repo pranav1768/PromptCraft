@@ -292,7 +292,7 @@ Make the prompt professional, clear, and perfectly optimized. Respond ONLY with 
             e('div', { className: 'container' },
                 'Powered by ',
                 e('a', { href: 'https://gemini.google.com', target: '_blank', className: 'footer-link' }, 'Google Gemini'),
-                ' • Build Your  Prompt'
+                ' • Build Your Prompt'
             )
         )
     );
