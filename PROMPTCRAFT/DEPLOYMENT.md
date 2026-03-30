@@ -100,7 +100,6 @@ git push -u origin main
 2. You should see all your files!
 
 
-
 ## 🌍 Bonus: Deploy to GitHub Pages
 
 ### Enable GitHub Pages:
