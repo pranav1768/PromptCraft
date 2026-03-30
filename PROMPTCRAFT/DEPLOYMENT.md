@@ -99,7 +99,7 @@ git push -u origin main
 1. Go to your GitHub repository: `https://github.com/yourusername/promptcraft`
 2. You should see all your files!
 
----
+--
 
 ## 🌍 Bonus: Deploy to GitHub Pages
 
