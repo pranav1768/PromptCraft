@@ -65,7 +65,7 @@ git commit -m "Initial commit: PromptCraft v1.0"
 git branch -M main
 ```
 
----
+--
 
 ## 🌐 Step 4: Connect to GitHub
 
