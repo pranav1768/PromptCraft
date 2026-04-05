@@ -66,7 +66,6 @@ git branch -M main
 ```
 
 
-
 ## 🌐 Step 4: Connect to GitHub
 
 **Replace `yourusername` with your actual GitHub username:**
