@@ -93,7 +93,6 @@ git push -u origin main
 - **Password:** Your GitHub Personal Access Token ([Create one here](https://github.com/settings/tokens))
 
 
-
 ## ✅ Step 6: Verify Upload
 
 1. Go to your GitHub repository: `https://github.com/yourusername/promptcraft`
