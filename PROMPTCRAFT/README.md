@@ -2,7 +2,6 @@
 
 > AI-powered prompt engineering platform using Google Gemini
 
-
 ## 🚀 Features
 
 - **AI-Powered Generation** - Uses Google Gemini 3 Flash for intelligent prompt creation
