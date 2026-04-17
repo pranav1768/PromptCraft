@@ -186,4 +186,4 @@ Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
 
 Project Link: [https://github.com/yourusername/promptcraft](https://github.com/yourusername/promptcraft)
 
-**Made by Pranav Karke, for developers**
+**Made by Pranav Karke, for **
