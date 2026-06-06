@@ -123,14 +123,6 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📝 License
-
-This project is licensed under the MIT License - see below for details:
-
-```
-MIT License
-
-
 
 ## 💡 Tips
 
