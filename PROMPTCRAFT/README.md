@@ -157,6 +157,6 @@ Contributions are welcome! Please follow these steps:
 
 Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
 
-Project Link: [https://github.com/yourusername/promptcraft](https://github.com/yourusername/promptcraft)
+Project Link: [https://github.com/pranav1768/promptcraft](https://github.com/yourusername/promptcraft)
 
 **Made by Pranav Karke, for practice**
