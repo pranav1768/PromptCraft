@@ -1,6 +1,6 @@
 # PromptCraft ✦
 
-> AI-powered prompt engineering platform using Google Gemini
+AI-powered prompt engineering platform using Google Gemini
 
 ## 🚀 Features
 
@@ -20,7 +20,7 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/promptcraft.git
+   git clone https://github.com/pranav1768/promptcraft.git
    cd promptcraft
    ```
 
@@ -87,7 +87,7 @@ const CONFIG = {
 2. Navigate to "Pages" section
 3. Select "main" branch and "/ (root)" folder
 4. Click "Save"
-5. Your site will be live at `https://yourusername.github.io/promptcraft/`
+5. Your site will be live at `https://pranav1768.github.io/promptcraft/`
 
 ### Netlify
 
