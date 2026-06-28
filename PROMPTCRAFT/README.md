@@ -1,162 +1,104 @@
-# PromptCraft ✦
+# PromptCraft ✦ v2
 
-AI-powered prompt engineering platform using Google Gemini
+AI-powered prompt engineering platform using Google Gemini — enhanced with history, favorites, export, and deep customization.
 
-## 🚀 Features
+## ✨ What's new in v2
 
-- **AI-Powered Generation** - Uses Google Gemini 3 Flash for intelligent prompt creation
-- **Customizable Options** - Choose tone, format, and complexity levels
-- **Smart Analysis** - Get detailed breakdowns of your generated prompts
-- **Clean UI** - Minimal, professional dark theme interface
-- **Responsive Design** - Works perfectly on desktop, tablet, and mobile
-- **Easy to Use** - Simple configuration with instant results
+- **Live Quality Meter** — real-time scoring as you type your task description
+- **8 built-in templates** — Code Review, Blog Post, Data Analysis, Email, Learning Plan, Marketing, API Docs, Brainstorm
+- **Prompt history** — last 30 prompts saved locally, click to restore any
+- **Favorites** — star your best prompts and access them instantly
+- **Export** — copy to clipboard, download as `.txt` or `.md`
+- **7 tone options** — Professional, Casual, Technical, Creative, Academic, Persuasive, Friendly
+- **6 output formats** — Paragraph, Bullet Points, Step-by-Step, Chain of Thought, Few-Shot, Structured Sections
+- **4 complexity levels** — Basic → Intermediate → Advanced → Expert
+- **Include toggles** — Role/Context, Examples, Constraints, Output Format spec
+- **4 Gemini models** — 2.0 Flash, 1.5 Flash, 1.5 Pro, 1.0 Pro
+- **Proper Vite build** — fast, deployable to Netlify/Vercel in one click
 
-## 📋 Prerequisites
+## 🛠 Setup
 
-- A modern web browser (Chrome, Firefox, Safari, Edge)
-- Google Gemini API key ([Get one here](https://aistudio.google.com/app/apikey))
+### 1. Install dependencies
 
-## 🛠️ Installation
+```bash
+npm install
+```
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/pranav1768/promptcraft.git
-   cd promptcraft
-   ```
+### 2. Get a Gemini API key
 
-2. **Add your API key**
-   - Open `js/config.js`
-   - Replace `YOUR_API_KEY_HERE` with your Google Gemini API key:
-   ```javascript
-   GEMINI_API_KEY: 'your-actual-api-key-here'
-   ```
+1. Visit [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
+2. Click **Create API Key** (free tier available)
+3. Copy the key
 
-3. **Run locally**
-   - Simply open `index.html` in your browser
-   - Or use a local server:
-   ```bash
-   # Using Python
-   python -m http.server 8000
-   
-   # Using Node.js
-   npx serve
-   ```
+### 3. Add the API key
 
-4. **Access the app**
-   - Open `http://localhost:8000` in your browser
+Open the app and click ⚙ Settings in the top-right. Paste your key there.
 
-## 📁 Project Structure
+Your key is saved to `localStorage` only — it never leaves your browser.
+
+### 4. Run locally
+
+```bash
+npm run dev
+```
+
+Then open `http://localhost:5173`
+
+## 🚀 Deploy to Netlify (recommended)
+
+1. Push this folder to a GitHub repository
+2. Go to [app.netlify.com](https://app.netlify.com) → **Add new site → Import an existing project**
+3. Connect your GitHub repo
+4. Netlify auto-detects Vite — build command `npm run build`, publish dir `dist`
+5. Click **Deploy**
+
+Your site is live at `https://your-site.netlify.app`
+
+## 🚀 Deploy to Vercel
+
+1. Push to GitHub
+2. Go to [vercel.com](https://vercel.com) → **Import Project**
+3. Select the repo — Vercel auto-detects Vite
+4. Click **Deploy**
+
+## 📁 Project structure
 
 ```
 promptcraft/
-├── index.html          # Main HTML file
-├── css/
-│   └── styles.css      # All styles
-├── js/
-│   ├── config.js       # API configuration
-│   └── app.js          # React application
-├── assets/
-│   └── screenshot.png  # App screenshot (add yours)
-├── README.md           # This file
-└── .gitignore          # Git ignore rules
+├── index.html
+├── package.json
+├── vite.config.js
+├── netlify.toml
+├── .gitignore
+└── src/
+    ├── main.jsx
+    ├── App.jsx
+    ├── index.css
+    ├── components/
+    │   ├── Header.jsx
+    │   ├── Sidebar.jsx
+    │   ├── TemplatesPanel.jsx
+    │   ├── HistoryPanel.jsx
+    │   ├── FavoritesPanel.jsx
+    │   ├── PromptForm.jsx
+    │   ├── QualityMeter.jsx
+    │   ├── PromptOutput.jsx
+    │   ├── SettingsModal.jsx
+    │   └── Toast.jsx
+    ├── hooks/
+    │   ├── useHistory.js
+    │   ├── useFavorites.js
+    │   └── useToast.js
+    ├── services/
+    │   └── gemini.js
+    └── data/
+        └── options.js
 ```
 
-## ⚙️ Configuration
+## 🔐 Security
 
-Edit `js/config.js` to customize:
+Your API key is stored in `localStorage` only. For public deployments, consider adding a backend proxy so the key never ships in the client bundle.
 
-```javascript
-const CONFIG = {
-    GEMINI_API_KEY: 'your-api-key-here',
-    GEMINI_MODEL: 'gemini-3-flash-preview'  // Or 'gemini-pro'
-};
-```
+---
 
-## 🎯 Usage
-
-1. **Describe your task** - What do you need the AI to do?
-2. **Choose options** - Select tone, format, and complexity
-3. **Generate** - Click "Generate Prompt"
-4. **Copy & Use** - Copy the optimized prompt for your AI tools
-
-## 🌐 Deployment
-
-### GitHub Pages
-
-1. Go to your repository settings
-2. Navigate to "Pages" section
-3. Select "main" branch and "/ (root)" folder
-4. Click "Save"
-5. Your site will be live at `https://pranav1768.github.io/promptcraft/`
-
-### Netlify
-
-1. Push your code to GitHub
-2. Go to [Netlify](https://app.netlify.com)
-3. Click "Add new site" → "Import an existing project"
-4. Connect to your GitHub repository
-5. Click "Deploy site"
-
-### Vercel
-
-1. Push your code to GitHub
-2. Go to [Vercel](https://vercel.com)
-3. Click "Import Project"
-4. Connect to your GitHub repository
-5. Click "Deploy"
-
-## 🔐 Security Note
-
-⚠️ **Important:** Never commit your API key to public repositories!
-
-- Use environment variables for production
-- Keep `config.js` in `.gitignore` if sharing publicly
-- For public repos, provide a `config.example.js` template
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-
-## 💡 Tips
-
-- Use descriptive task descriptions for better prompts
-- Experiment with different tones and formats
-- The "Include Examples" option adds practical demonstrations
-- Try different complexity levels based on your needs
-
-## 🐛 Troubleshooting
-
-**API Key Not Working?**
-- Verify your key at [Google AI Studio](https://aistudio.google.com/app/apikey)
-- Check if the key is correctly added to `config.js`
-- Ensure you're not hitting rate limits (60 requests/min)
-
-**Prompt Not Generating?**
-- Check browser console (F12) for errors
-- Verify internet connection
-- Try a different Gemini model in config
-
-**CORS Issues?**
-- Use a local server instead of opening HTML directly
-- Try: `python -m http.server` or `npx serve`
-
-## 🙏 Acknowledgments
-
-- Built with [React](https://react.dev/)
-- Powered by [Google Gemini](https://gemini.google.com/)
-- Font: [Inter](https://fonts.google.com/specimen/Inter)
-
-## 📧 Contact
-
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
-
-Project Link: [https://github.com/pranav1768/promptcraft]  
-
-**Made by Pranav Karke, for practice**
+Made by Pranav Karke — PromptCraft v2
