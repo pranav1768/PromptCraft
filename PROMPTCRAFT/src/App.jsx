@@ -5,6 +5,7 @@ import PromptForm from './components/PromptForm.jsx'
 import PromptOutput from './components/PromptOutput.jsx'
 import SettingsModal from './components/SettingsModal.jsx'
 import Toast from './components/Toast.jsx'
+import RuixenMoonChat from './components/ui/ruixen-moon-chat.jsx'
 import { useHistory } from './hooks/useHistory.js'
 import { useFavorites } from './hooks/useFavorites.js'
 import { useToast } from './hooks/useToast.js'
@@ -23,7 +24,44 @@ const DEFAULT_OPTIONS = {
   includeOutputFormat: false,
 }
 
+// Map landing quick-actions to pre-filled tasks + options
+const QUICK_ACTION_MAP = {
+  code: {
+    task: 'Write clean, well-structured code with proper error handling, comments, and best practices',
+    options: { tone: 'technical', format: 'step-by-step', complexity: 'advanced', audience: 'developer', includeExamples: true, includeConstraints: true },
+  },
+  app: {
+    task: 'Build a full-stack web application with a modern UI, authentication, and a REST API',
+    options: { tone: 'technical', format: 'structured', complexity: 'advanced', audience: 'developer', includeOutputFormat: true },
+  },
+  ui: {
+    task: 'Design reusable, accessible UI components with consistent styling and clear prop interfaces',
+    options: { tone: 'technical', format: 'bullet', complexity: 'intermediate', audience: 'developer', includeExamples: true },
+  },
+  theme: {
+    task: 'Create a cohesive color palette and design system for a modern SaaS application',
+    options: { tone: 'creative', format: 'structured', complexity: 'intermediate', domain: 'technology', includeExamples: true },
+  },
+  dashboard: {
+    task: 'Design a data-rich user dashboard with charts, KPIs, and intuitive navigation',
+    options: { tone: 'professional', format: 'structured', complexity: 'advanced', audience: 'designer', includeOutputFormat: true },
+  },
+  landing: {
+    task: 'Write compelling copy and page structure for a high-converting SaaS landing page',
+    options: { tone: 'persuasive', format: 'structured', complexity: 'intermediate', domain: 'marketing', includeExamples: true },
+  },
+  docs: {
+    task: 'Create clear, comprehensive technical documentation with examples and troubleshooting guides',
+    options: { tone: 'technical', format: 'structured', complexity: 'intermediate', audience: 'developer', includeExamples: true, includeOutputFormat: true },
+  },
+  image: {
+    task: 'Generate detailed image generation prompts with specific style, composition, lighting, and mood directions',
+    options: { tone: 'creative', format: 'structured', complexity: 'advanced', domain: 'creative', includeExamples: true },
+  },
+}
+
 export default function App() {
+  const [showLanding, setShowLanding] = useState(true)
   const [apiKey, setApiKey] = useState(() => localStorage.getItem('pc_apikey') || '')
   const [model, setModel] = useState('gemini-2.0-flash')
   const [taskInput, setTaskInput] = useState('')
@@ -39,6 +77,22 @@ export default function App() {
   const { favorites, toggleFavorite, isFavorite, clearFavorites } = useFavorites()
   const { toasts, addToast, removeToast } = useToast()
 
+  // ── Landing → App transitions ────────────────────────────────
+  const handleLandingSubmit = (text) => {
+    setTaskInput(text)
+    setShowLanding(false)
+  }
+
+  const handleQuickAction = (actionType) => {
+    const action = QUICK_ACTION_MAP[actionType]
+    if (action) {
+      setTaskInput(action.task)
+      setOptions({ ...DEFAULT_OPTIONS, ...action.options })
+    }
+    setShowLanding(false)
+  }
+
+  // ── PromptCraft logic ────────────────────────────────────────
   const handleApiKeyChange = (key) => {
     setApiKey(key)
     localStorage.setItem('pc_apikey', key)
@@ -113,6 +167,20 @@ export default function App() {
     )
   }
 
+  // ── Landing screen ───────────────────────────────────────────
+  if (showLanding) {
+    return (
+      <>
+        <RuixenMoonChat
+          onSubmit={handleLandingSubmit}
+          onQuickAction={handleQuickAction}
+        />
+        <Toast toasts={toasts} onRemove={removeToast} />
+      </>
+    )
+  }
+
+  // ── Main PromptCraft UI ──────────────────────────────────────
   return (
     <div className="app">
       <Header
@@ -120,6 +188,7 @@ export default function App() {
         onModelChange={setModel}
         onSettingsOpen={() => setShowSettings(true)}
         apiKey={apiKey}
+        onHomeClick={() => setShowLanding(true)}
       />
 
       <div className="app-body">

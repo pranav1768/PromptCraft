@@ -1,20 +1,18 @@
 # PromptCraft ✦ v2
 
-AI-powered prompt engineering platform using Google Gemini — enhanced with history, favorites, export, and deep customization.
+AI-powered prompt engineering platform using Google Gemini — now with a beautiful moon-lit landing screen, history, favorites, export, and deep customization.
 
-## ✨ What's new in v2
+## ✨ Features
 
-- **Live Quality Meter** — real-time scoring as you type your task description
+- **Ruixen Moon Chat landing page** — stunning background, quick-action pills, auto-transitions to PromptCraft
+- **Live Quality Meter** — real-time task scoring as you type
 - **8 built-in templates** — Code Review, Blog Post, Data Analysis, Email, Learning Plan, Marketing, API Docs, Brainstorm
-- **Prompt history** — last 30 prompts saved locally, click to restore any
-- **Favorites** — star your best prompts and access them instantly
-- **Export** — copy to clipboard, download as `.txt` or `.md`
-- **7 tone options** — Professional, Casual, Technical, Creative, Academic, Persuasive, Friendly
-- **6 output formats** — Paragraph, Bullet Points, Step-by-Step, Chain of Thought, Few-Shot, Structured Sections
-- **4 complexity levels** — Basic → Intermediate → Advanced → Expert
-- **Include toggles** — Role/Context, Examples, Constraints, Output Format spec
+- **History** — last 30 prompts saved locally, click any to restore
+- **Favorites** — star prompts and access them instantly
+- **Export** — copy, download as `.txt` or `.md`
+- **7 tones / 6 formats / 4 complexity levels / 4 lengths**
+- **Include toggles** — Role, Examples, Constraints, Output Format
 - **4 Gemini models** — 2.0 Flash, 1.5 Flash, 1.5 Pro, 1.0 Pro
-- **Proper Vite build** — fast, deployable to Netlify/Vercel in one click
 
 ## 🛠 Setup
 
@@ -24,80 +22,54 @@ AI-powered prompt engineering platform using Google Gemini — enhanced with his
 npm install
 ```
 
-### 2. Get a Gemini API key
+### 2. Get a free Gemini API key
 
-1. Visit [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
-2. Click **Create API Key** (free tier available)
-3. Copy the key
+Visit [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey) → Create API Key
 
-### 3. Add the API key
-
-Open the app and click ⚙ Settings in the top-right. Paste your key there.
-
-Your key is saved to `localStorage` only — it never leaves your browser.
-
-### 4. Run locally
+### 3. Run locally
 
 ```bash
 npm run dev
+# http://localhost:5173
 ```
 
-Then open `http://localhost:5173`
+Click ⚙ Settings → paste your Gemini key → start generating.
 
-## 🚀 Deploy to Netlify (recommended)
+## 🚀 Deploy
 
-1. Push this folder to a GitHub repository
-2. Go to [app.netlify.com](https://app.netlify.com) → **Add new site → Import an existing project**
-3. Connect your GitHub repo
-4. Netlify auto-detects Vite — build command `npm run build`, publish dir `dist`
-5. Click **Deploy**
-
-Your site is live at `https://your-site.netlify.app`
-
-## 🚀 Deploy to Vercel
+### Netlify (recommended)
 
 1. Push to GitHub
-2. Go to [vercel.com](https://vercel.com) → **Import Project**
-3. Select the repo — Vercel auto-detects Vite
-4. Click **Deploy**
+2. [app.netlify.com](https://app.netlify.com) → Add new site → Import from GitHub
+3. Auto-detected: build command `npm run build`, publish dir `dist`
+4. Deploy ✓
 
-## 📁 Project structure
+### Vercel
+
+1. Push to GitHub
+2. [vercel.com](https://vercel.com) → Import → auto-detects Vite → Deploy ✓
+
+## 📁 Structure
 
 ```
 promptcraft/
-├── index.html
-├── package.json
-├── vite.config.js
-├── netlify.toml
-├── .gitignore
+├── tailwind.config.js     ← Tailwind (preflight disabled)
+├── postcss.config.js
+├── vite.config.js         ← @ alias for /src
 └── src/
-    ├── main.jsx
-    ├── App.jsx
-    ├── index.css
+    ├── App.jsx            ← Landing → PromptCraft flow
+    ├── index.css          ← Tailwind + custom design tokens
+    ├── lib/utils.js       ← cn() helper
     ├── components/
-    │   ├── Header.jsx
-    │   ├── Sidebar.jsx
-    │   ├── TemplatesPanel.jsx
-    │   ├── HistoryPanel.jsx
-    │   ├── FavoritesPanel.jsx
-    │   ├── PromptForm.jsx
-    │   ├── QualityMeter.jsx
-    │   ├── PromptOutput.jsx
-    │   ├── SettingsModal.jsx
-    │   └── Toast.jsx
-    ├── hooks/
-    │   ├── useHistory.js
-    │   ├── useFavorites.js
-    │   └── useToast.js
-    ├── services/
-    │   └── gemini.js
-    └── data/
-        └── options.js
+    │   ├── ui/
+    │   │   ├── ruixen-moon-chat.jsx  ← Landing screen
+    │   │   ├── button.jsx            ← shadcn Button
+    │   │   └── textarea.jsx          ← shadcn Textarea
+    │   ├── Header, Sidebar, PromptForm, PromptOutput ...
+    ├── hooks/  useHistory · useFavorites · useToast
+    ├── services/gemini.js
+    └── data/options.js
 ```
-
-## 🔐 Security
-
-Your API key is stored in `localStorage` only. For public deployments, consider adding a backend proxy so the key never ships in the client bundle.
 
 ---
 

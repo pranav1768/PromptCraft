@@ -1,4 +1,4 @@
-export default function Header({ model, onModelChange, onSettingsOpen, apiKey }) {
+export default function Header({ model, onModelChange, onSettingsOpen, apiKey, onHomeClick }) {
   const models = [
     { value: 'gemini-2.0-flash', label: 'Gemini 2.0 Flash' },
     { value: 'gemini-1.5-flash', label: 'Gemini 1.5 Flash' },
@@ -8,11 +8,11 @@ export default function Header({ model, onModelChange, onSettingsOpen, apiKey })
 
   return (
     <header className="header">
-      <div className="logo">
+      <button className="logo" onClick={onHomeClick} title="Back to home" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
         <div className="logo-mark">✦</div>
         <span>PromptCraft</span>
         <span className="logo-version">v2</span>
-      </div>
+      </button>
 
       <div className="header-actions">
         <div className={`api-status ${apiKey ? 'connected' : 'disconnected'}`}>
